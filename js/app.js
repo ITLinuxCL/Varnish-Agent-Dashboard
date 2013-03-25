@@ -1,5 +1,5 @@
 window.App = {};
-App.refreshTime = 10000;
+App.refreshTime = 2000;
 App.newStats = {};
 
 App.getStats = function(){
