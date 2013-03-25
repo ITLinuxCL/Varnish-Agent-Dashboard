@@ -1,6 +1,7 @@
 /* Put your CSS here */
 html, body {
 	height: 100%;
+	background-image: url('../img/wood.png');
 }
 
 .container {

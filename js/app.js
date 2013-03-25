@@ -14,7 +14,7 @@ App.calcHitRatio = function(){
 	delta_client_req = App.newStats.client_req.value - App.oldStats.client_req.value;
 	delta_cache_hit = App.newStats.cache_hit.value - App.oldStats.cache_hit.value;
 	hitRatio = (delta_cache_hit*100)/delta_client_req;
-	return hitRatio;
+	return Math.round(hitRatio);
 }
 
 App.updateHitRatio = function(){
