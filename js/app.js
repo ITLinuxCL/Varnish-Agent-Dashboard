@@ -10,8 +10,13 @@ App.getStats = function(){
 	})
 }
 
+App.calcHitRatio = function(){
+	hitRatio = (App.newStats.cache_hit.value*100)/App.newStats.client_req.value;
+	return hitRatio;
+}
+
 App.updateHitRatio = function(){
-	$("#hit-ratio").text(App.newStats.cache_hit.value);
+	$("#hit-ratio").html("<h1>"+App.calcHitRatio()+"</h1>");
 }
 
 App.updateData = function(){
