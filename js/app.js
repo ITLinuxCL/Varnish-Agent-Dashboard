@@ -3,7 +3,7 @@ App.newStats = {};
 
 App.getStats = function(){
 	$.getJSON("/stats", function(data){
-		newStats = data;
+		App.newStats = data;
 	})
 }
 
