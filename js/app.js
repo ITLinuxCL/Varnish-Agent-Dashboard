@@ -10,6 +10,6 @@ App.getStats = function(){
 
 $(function(){
 
-	setTimeout(App.getStats,App.refreshTime);
+	setInterval(App.getStats,App.refreshTime);
 	
 });
