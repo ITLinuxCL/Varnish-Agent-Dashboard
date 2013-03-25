@@ -10,14 +10,14 @@ App.getStats = function(){
 	})
 }
 
-App.updateHitRatio = function({
+App.updateHitRatio = function(){
 	$("#hit-ratio").text(App.newStats.cache_hit.value);
-});
+}
 
-App.updateData = function({
+App.updateData = function(){
 	App.getStats;
 	App.updateHitRatio();
-});
+}
 
 $(function(){
 
