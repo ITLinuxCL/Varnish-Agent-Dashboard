@@ -1,5 +1,5 @@
 window.App = {};
-App.refreshTime = 2000;
+App.refreshTime = 1000;
 App.oldStats = {};
 App.newStats = {};
 
