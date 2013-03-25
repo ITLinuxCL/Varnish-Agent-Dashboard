@@ -40,7 +40,7 @@ App.getCacheMetrics = function() {
 	var hits_ratio = {
 		label: "Hits Ratio",
 		new_value: App.calcHitRatio(),
-		average_value: App.calcAverageHitRatio();
+		average_value: App.calcAverageHitRatio()
 	}
 	var hits_qty = {
 		label: "Hits Qty.",
