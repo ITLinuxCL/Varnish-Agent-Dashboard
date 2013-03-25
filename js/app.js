@@ -32,7 +32,7 @@ App.updateData = function(){
 	App.getStats();
 	App.updateHitRatio();
 	App.builMetricsTable("cache", App.getCacheMetrics());
-	App.getTrafficMetrics("traffic", App.getCacheMetrics());
+	App.builMetricsTable("traffic", App.getTrafficMetrics());
 	App.builMetricsTable("backend", App.getCacheMetrics());
 }
 
