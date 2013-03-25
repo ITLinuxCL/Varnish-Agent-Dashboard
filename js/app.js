@@ -17,6 +17,11 @@ App.calcHitRatio = function(){
 	return Math.round(hitRatio);
 }
 
+App.calcAverageHitRatio = function(){
+	hitRatio = App.newStats.cache_hit.value * 100 / App.oldStats.client_req.value;
+	return Math.round(hitRatio);
+}
+
 App.updateHitRatio = function(){
 	
 	App.hitRatioGauge.refresh(App.calcHitRatio());
@@ -35,7 +40,7 @@ App.getCacheMetrics = function() {
 	var hits_ratio = {
 		label: "Hits Ratio",
 		new_value: App.calcHitRatio(),
-		average_value: App.calcHitRatio()
+		average_value: App.calcAverageHitRatio();
 	}
 	var hits_qty = {
 		label: "Hits Qty.",
