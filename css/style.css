@@ -87,3 +87,8 @@ html, body {
 #hit-ratio svg {
 	margin-top: -20px;
 }
+
+.metric-value {
+	border-left: 1px solid #e8e8e8;
+	text-align: right;
+}

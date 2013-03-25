@@ -54,8 +54,8 @@ App.getCacheMetrics = function() {
 	}
 	var obj_cache = {
 		label: "Objs. in Cache",
-		new_value: App.newStats.n_object.value,
-		average_value: App.oldStats.n_object.value
+		new_value: nFormatter(App.newStats.n_object.value),
+		average_value: nFormatter(App.oldStats.n_object.value)
 	}
 	return [hits_ratio, hits_qty, miss_qty, obj_cache]
 }
