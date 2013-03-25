@@ -21,7 +21,7 @@ VarnishDashboard.Store = DS.Store.extend({
 ClientConn = DS.Model.extend({
 	value: DS.attr('number'),
 	flag: DS.attr('string'),
-	description: DS.attr(string),
+	description: DS.attr('string'),
 });
 
 VarnishDashboard.Stat = DS.Model.extend({
