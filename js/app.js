@@ -19,5 +19,13 @@ VarnishDashboard.Store = DS.Store.extend({
 
 VarnishDashboard.Stat = DS.Model.extend({
 	timestamp: DS.attr('date'),
+	clientConn: DS.attr(ClientConn, {embedded: true, key: "client_conn"})
 	
+});
+
+
+ClientConn = DS.Model.extend({
+	value: DS.attr('number'),
+	flag: DS.attr('string'),
+	description: DS.attr(string),
 });
