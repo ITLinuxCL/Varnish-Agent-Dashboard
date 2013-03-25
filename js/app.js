@@ -45,17 +45,17 @@ App.getCacheMetrics = function() {
 	var hits_qty = {
 		label: "Hits Qty.",
 		new_value: nFormatter(App.newStats.cache_hit.value - App.oldStats.cache_hit.value),
-		average_value: nFormatter(App.newStats.cache_hit.value / App.newStats.uptime)
+		average_value: nFormatter(App.newStats.cache_hit.value / App.newStats.uptime.value)
 	}
 	var miss_qty = {
 		label: "Miss Qty.",
 		new_value: nFormatter(App.newStats.cache_miss.value - App.oldStats.cache_miss.value),
-		average_value: nFormatter(App.newStats.cache_miss.value / App.newStats.uptime)
+		average_value: nFormatter(App.newStats.cache_miss.value / App.newStats.uptime.value)
 	}
 	var obj_cache = {
 		label: "Objs. in Cache",
 		new_value: nFormatter(App.newStats.n_object.value - App.oldStats.n_object.value),
-		average_value: nFormatter(App.newStats.n_object.value / App.newStats.uptime)
+		average_value: nFormatter(App.newStats.n_object.value / App.newStats.uptime.value)
 	}
 	return [hits_ratio, hits_qty, miss_qty, obj_cache]
 }
