@@ -39,7 +39,7 @@ App.getCacheMetrics = function() {
 	}
 	var hits_qty = {
 		label: "Hits Qty.",
-		new_value: nFormatter(App.newStats.cache_hit.value - App.oldStats.cache_hit.value),
+		new_value: App.newStats.cache_hit.value - App.oldStats.cache_hit.value,
 		average_value: nFormatter(App.newStats.cache_hit.value / App.refreshTime)
 	}
 	var miss_qty = {
