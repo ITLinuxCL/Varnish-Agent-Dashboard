@@ -39,8 +39,8 @@ App.getCacheMetrics = function() {
 	}
 	var hits_qty = {
 		label: "Hits Qty.",
-		new_value: App.newStats.cache_hit.value,
-		average_value: App.oldStats.cache_hit.value
+		new_value: nFormatter(App.newStats.cache_hit.value),
+		average_value: nFormatter(App.oldStats.cache_hit.value)
 	}
 	var miss_qty = {
 		label: "Miss Qty.",
@@ -75,3 +75,17 @@ $(function(){
 	setInterval(App.updateData,App.refreshTime);
 	
 });
+
+
+function nFormatter(num) {
+     if (num >= 1000000000) {
+        return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'G';
+     }
+     if (num >= 1000000) {
+        return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+     }
+     if (num >= 1000) {
+        return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+     }
+     return num;
+}
