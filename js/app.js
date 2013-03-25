@@ -79,8 +79,8 @@ App.getTrafficMetrics = function() {
 	
 	var bandwith = {
 		label: "Bandwidth",
-		new_value: nFormatter((App.newStats.s_hdrbytes + App.newStats.s_bodybytes) - (App.oldStats.s_hdrbytes + App.oldStats.s_bodybytes)),
-		average_value: nFormatter((App.newStats.s_hdrbytes + App.newStats.s_bodybytes) / App.newStats.uptime.value)
+		new_value: nFormatter((App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value) - (App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value)),
+		average_value: nFormatter((App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value) / App.newStats.uptime.value)
 	}
 	
 	return [client_conn, client_req, req_per_conn, bandwith]
