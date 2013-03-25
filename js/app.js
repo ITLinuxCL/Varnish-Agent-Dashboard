@@ -1,5 +1,5 @@
 window.App = {};
-App.refreshTime = 1000;
+App.refreshTime = 5000;
 App.oldStats = {};
 App.newStats = {};
 
@@ -18,7 +18,9 @@ App.calcHitRatio = function(){
 }
 
 App.updateHitRatio = function(){
-	$("#hit-ratio").html("<h1>"+App.calcHitRatio()+"</h1>");
+	
+	App.hitRatioGauge.refresh(App.calcHitRatio());
+	//$("#hit-ratio").html("<h1>"+App.calcHitRatio()+"</h1>");
 }
 
 App.updateData = function(){
@@ -27,7 +29,14 @@ App.updateData = function(){
 }
 
 $(function(){
-
+	App.hitRatioGauge = new JustGage({
+	    id: "hit-ratio", 
+	    value: 0, 
+	    min: 0,
+	    max: 100,
+	    title: " ",
+		label: "%"
+	  });
 	setInterval(App.updateData,App.refreshTime);
 	
 });
