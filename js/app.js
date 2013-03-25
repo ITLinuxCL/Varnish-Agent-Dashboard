@@ -1,4 +1,5 @@
 window.App = {};
+App.refreshTime = 10000;
 App.newStats = {};
 
 App.getStats = function(){
@@ -7,3 +8,8 @@ App.getStats = function(){
 	})
 }
 
+$(function(){
+
+	setTimeout(App.getStats,App.refreshTime);
+	
+});
