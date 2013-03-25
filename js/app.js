@@ -26,7 +26,7 @@ ClientConn = DS.Model.extend({
 
 VarnishDashboard.Stat = DS.Model.extend({
 	timestamp: DS.attr('date'),
-	clientConn: DS.attr(ClientConn, {embedded: true, key: "client_conn"})
+	clientConn: DS.hasOne(ClientConn, {embedded: true, key: "client_conn"})
 	
 });
 
