@@ -33,7 +33,7 @@ App.updateData = function(){
 	App.updateHitRatio();
 	App.builMetricsTable("cache", App.getCacheMetrics());
 	App.builMetricsTable("traffic", App.getTrafficMetrics());
-	App.builMetricsTable("backend", App.getCacheMetrics());
+	App.builMetricsTable("backend", App.getBackendMetrics());
 }
 
 App.getCacheMetrics = function() {
@@ -85,6 +85,29 @@ App.getTrafficMetrics = function() {
 	
 	return [client_conn, client_req, req_per_conn, bandwith]
 	
+}
+
+App.getBackendMetrics = function() {
+	var backend_conn = {
+		label: "Connections",
+		new_value: nFormatter(App.newStats.backend_conn.value - App.oldStats.backend_conn.value),
+		average_value: nFormatter(App.newStats.backend_conn.value / App.newStats.uptime.value)
+	}
+	var backend_fail = {
+		label: "Fails",
+		new_value: nFormatter(App.newStats.backend_fail.value - App.oldStats.backend_fail.value),
+		average_value: nFormatter(App.newStats.backend_fail.value / App.newStats.uptime.value)
+	}
+	var backend_reuse = {
+		label: "Reuse",
+		new_value: nFormatter(App.newStats.backend_reuse.value - App.oldStats.backend_reuse.value),
+		average_value: nFormatter(App.newStats.backend_reuse.value / App.newStats.uptime.value)
+	}
+	var backend_recycle = {
+		label: "Recycle",
+		new_value: nFormatter(App.newStats.backend_recycle.value - App.oldStats.backend_recycle.value),
+		average_value: nFormatter(App.newStats.backend_recycle.value / App.newStats.uptime.value)
+	}
 }
 
 
