@@ -32,7 +32,7 @@ App.updateData = function(){
 	App.getStats();
 	App.updateHitRatio();
 	App.builMetricsTable("cache", App.getCacheMetrics());
-	App.builMetricsTable("traffic", App.getCacheMetrics());
+	App.getTrafficMetrics("traffic", App.getCacheMetrics());
 	App.builMetricsTable("backend", App.getCacheMetrics());
 }
 
@@ -55,10 +55,38 @@ App.getCacheMetrics = function() {
 	var obj_cache = {
 		label: "Objs. in Cache",
 		new_value: nFormatter(App.newStats.n_object.value - App.oldStats.n_object.value),
-		average_value: nFormatter(App.newStats.n_object.value / App.newStats.uptime.value)
+		average_value: nFormatter(App.newStats.n_object.value)
 	}
 	return [hits_ratio, hits_qty, miss_qty, obj_cache]
 }
+
+App.getTrafficMetrics = function() {
+	var client_conn = {
+		label = "Connections",
+		new_value: nFormatter(App.newStats.client_conn.value - App.oldStats.client_conn.value),
+		average_value: nFormatter(App.newStats.client_conn.value / App.newStats.uptime.value)
+	}
+	var client_req = {
+		label = "Requests",
+		new_value: nFormatter(App.newStats.client_req.value - App.oldStats.client_req.value),
+		average_value: nFormatter(App.newStats.client_req.value / App.newStats.uptime.value)
+	}
+	var req_per_conn = {
+		label = "Req / Conn",
+		new_value: nFormatter((App.newStats.client_req.value - App.oldStats.client_req.value) /(App.newStats.client_conn.value - App.oldStats.client_conn.value) ),
+		average_value: nFormatter(App.newStats.client_req.value / App.newStats.client_conn.value)
+	}
+	
+	var bandwith = {
+		label = "Bandwidth",
+		new_value: nFormatter((App.newStats.s_hdrbytes + App.newStats.s_bodybytes) - (App.oldStats.s_hdrbytes + App.oldStats.s_bodybytes)),
+		average_value: nFormatter((App.newStats.s_hdrbytes + App.newStats.s_bodybytes) / App.newStats.uptime.value)
+	}
+	
+	return [client_conn, client_req, req_per_conn, bandwith]
+	
+}
+
 
 App.builMetricsTable = function(table_id, values_object){
 	var source   = $("#metrics-table-template").html();
