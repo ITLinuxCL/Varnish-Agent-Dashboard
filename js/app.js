@@ -15,7 +15,7 @@ App.updateHitRatio = function(){
 }
 
 App.updateData = function(){
-	App.getStats;
+	App.getStats();
 	App.updateHitRatio();
 }
 
