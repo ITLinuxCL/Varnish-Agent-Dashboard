@@ -4,16 +4,55 @@
 		<meta charset="utf-8">
 		<meta charset=utf-8 />
 		<title>Varnish Dashboard</title>
-  		<link rel="stylesheet" href="css/normalize.css">
-  		<link rel="stylesheet" href="css/style.css">
 	  	<link rel="stylesheet" href="css/bootstrap-responsive.css">
 	  	<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-  		<div><button class="btn btn-primary">Boton</button></div>
-
-	 <div id="hit-ratio">
-	 </div>
+	  <div id="wrap">
+		<div class="navbar navbar-fixed-top navbar-inverse">
+		  <div class="navbar-inner">
+			<div class="container">
+		      <a class="brand" href="#">Varnish Dashboard</a>
+		    </div>
+		  </div>
+		</div>
+		
+		<div class="container">
+			
+			<div class="row-fluid">
+				<div class="span4">
+					<div class="content-box">
+						<div class="content-box-header">
+							<i class="icon-time"></i>
+							Hit Ratio
+						</div>
+						<div id="hit-ratio"></div>
+					</div>
+				</div>
+				<div class="span8">
+					<div class="content-box">
+						<div class="content-box-header">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="hit-ratio"></div>
+			
+			
+			
+			
+			
+		</div>
+		<div id="push" />
+	  </div>
+	</div>
+	 <div id="footer">
+		<div class="container" style="padding-top: 20px">
+			<p><a href="http://www.itlinux.cl/">IT Linux</a></p>
+		</div>
+	  </div>
 
 	  <script src="js/libs/jquery-1.9.1.js"></script>
 	  <script src="js/libs/bootstrap.js"></script>
