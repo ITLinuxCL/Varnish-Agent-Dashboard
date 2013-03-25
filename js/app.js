@@ -62,23 +62,23 @@ App.getCacheMetrics = function() {
 
 App.getTrafficMetrics = function() {
 	var client_conn = {
-		label = "Connections",
+		label: "Connections",
 		new_value: nFormatter(App.newStats.client_conn.value - App.oldStats.client_conn.value),
 		average_value: nFormatter(App.newStats.client_conn.value / App.newStats.uptime.value)
 	}
 	var client_req = {
-		label = "Requests",
+		label: "Requests",
 		new_value: nFormatter(App.newStats.client_req.value - App.oldStats.client_req.value),
 		average_value: nFormatter(App.newStats.client_req.value / App.newStats.uptime.value)
 	}
 	var req_per_conn = {
-		label = "Req / Conn",
+		label: "Req / Conn",
 		new_value: nFormatter((App.newStats.client_req.value - App.oldStats.client_req.value) /(App.newStats.client_conn.value - App.oldStats.client_conn.value) ),
 		average_value: nFormatter(App.newStats.client_req.value / App.newStats.client_conn.value)
 	}
 	
 	var bandwith = {
-		label = "Bandwidth",
+		label: "Bandwidth",
 		new_value: nFormatter((App.newStats.s_hdrbytes + App.newStats.s_bodybytes) - (App.oldStats.s_hdrbytes + App.oldStats.s_bodybytes)),
 		average_value: nFormatter((App.newStats.s_hdrbytes + App.newStats.s_bodybytes) / App.newStats.uptime.value)
 	}
