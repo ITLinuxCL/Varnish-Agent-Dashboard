@@ -1,5 +1,6 @@
 window.App = {};
 App.refreshTime = 1000;
+App.requestMaxValue = 0;
 App.oldStats = {};
 App.newStats = {};
 
@@ -28,7 +29,10 @@ App.updateHitRatioGauge = function(){
 
 App.updateRequestGauge = function() {
 	requests_per_second = App.newStats.client_req.value - App.oldStats.client_req.value;
-	App.requestGauge.refresh(requests_per_second, 9000);
+	if(requests_per_second > App.requestMaxValue){
+		App.requestMaxValue = requests_per_second;
+	}
+	App.requestGauge.refresh(requests_per_second, App.requestMaxValue);
 }
 
 App.updateData = function(){
