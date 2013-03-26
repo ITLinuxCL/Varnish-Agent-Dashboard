@@ -5,6 +5,7 @@ App.bandwidthMaxValue = 0;
 App.oldStats = {};
 App.newStats = {};
 App.backendRequests = [];
+App.maxBackendResquestElements = 20;
 
 App.getStats = function(){
 	$.getJSON("/stats", function(data){
@@ -20,7 +21,7 @@ App.getBackendRequests = function() {
 			tmp_array = element["value"].split(": ");
 			tmp_obj[tmp_array[1]] = tmp_obj[tmp_array[1]] ? tmp_obj[tmp_array[1]] + 1 : 1;
 		})
-		App.backendRequests = object_to_sorted_array(tmp_obj);
+		App.backendRequests = object_to_sorted_array(tmp_obj).slice(0,App.maxBackendResquestElements);
 	})
 }
 
