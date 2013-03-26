@@ -106,15 +106,18 @@
 			<table class="table table-striped" style="table-layout: fixed;">
 			    <thead>
 					<tr>
-					  <th style="width:20%">Counter</th>
+					  <th style="width:5%">Counter</th>
 					  <th style="text-align:left;">URL</th>
 					</tr>
 				</thead>
 				<tbody>
 					{{#each request}}
 						<tr>
-							<td class="metric-value" style="width:20%">{{this.[1]}}</td>
-							<td class="metric-value" style="">{{this.[0]}}</td>
+							<td class="metric-value" style="width:5%">{{this.[1]}}</td>
+							<td class="metric-value" style="max-width: 100px;
+							    overflow: hidden;
+							    text-overflow: ellipsis;
+							    white-space: nowrap;">{{this.[0]}}</td>
 						</tr>
 					{{/each}}
 				</tbody>
