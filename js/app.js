@@ -227,8 +227,8 @@ function metric_per_second(metric) {
 function object_to_sorted_array(object){
 	var sortable = [];
 	for (var url in object){
-		sortable.push([url], object[url]);
+		sortable.push([url, object[url]]);
 	}
-	return sortable.sort(function(a,b){return a[1] - b[1]});
+	return sortable.sort(function(a,b){return b[1] - a[1]});
 
 }
