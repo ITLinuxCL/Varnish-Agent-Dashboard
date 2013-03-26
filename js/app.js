@@ -44,9 +44,10 @@ App.updateData = function(){
 	App.getStats();
 	App.updateHitRatioGauge();
 	App.updateRequestGauge();
+	App.updateBandwidthGauge();
 	App.builMetricsTable("cache", App.getCacheMetrics());
 	App.builMetricsTable("traffic", App.getTrafficMetrics());
-	App.updateBandwidthGauge();
+	App.builMetricsTable("backend", App.getBackendMetrics());
 }
 
 App.getCacheMetrics = function() {
