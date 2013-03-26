@@ -29,7 +29,7 @@ App.updateHitRatioGauge = function(){
 }
 
 App.updateRequestGauge = function() {
-	requests_per_second = App.newStats.client_req.value - App.oldStats.client_req.value;
+	requests_per_second = metric_per_second("client_req");
 	if(requests_per_second > App.requestMaxValue){
 		App.requestMaxValue = requests_per_second;
 	}
@@ -37,11 +37,16 @@ App.updateRequestGauge = function() {
 }
 
 App.updateBandwidthGauge = function(){
-	bandwidth = Math.round(((App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value) - (App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value)) / 1024 / 1024);
-	if(bandwidth > App.bandwidthMaxValue){
-		App.bandwidthMaxValue = bandwidth;
+	var new_bandwidth = App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value;
+	var old_bandwidth = App.oldtats.s_hdrbytes.value + App.oldStats.s_bodybytes.value;
+	
+	var actual_bandwidth_in_mega = Math.round((new_bandwidth - old_bandwidth) / 1024 / 1024);
+	bandwidth_per_second = actual_bandwidth_in_mega / App.refreshTime / 1000;
+	
+	if(bandwidth_per_second > App.bandwidthMaxValue){
+		App.bandwidthMaxValue = bandwidth_per_second;
 	}
-	App.bandwidthGauge.refresh(bandwidth, App.bandwidthMaxValue);
+	App.bandwidthGauge.refresh(bandwidth_per_second, App.bandwidthMaxValue);
 }
 
 App.updateData = function(){
@@ -79,6 +84,9 @@ App.getCacheMetrics = function() {
 }
 
 App.getTrafficMetrics = function() {
+	var new_bandwidth = App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value;
+	var old_bandwidth = App.oldtats.s_hdrbytes.value + App.oldStats.s_bodybytes.value;
+	
 	var client_conn = {
 		label: "Connections",
 		new_value: nFormatter(metric_per_second("client_conn")),
@@ -97,8 +105,8 @@ App.getTrafficMetrics = function() {
 	
 	var bandwith = {
 		label: "Bandwidth",
-		new_value: nFormatter((App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value) - (App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value)),
-		average_value: nFormatter((App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value) / App.newStats.uptime.value)
+		new_value: nFormatter((new_bandwidth - old_bandwidth)/App.refreshTime/1000),
+		average_value: nFormatter(new_bandwidth / App.newStats.uptime.value)
 	}
 	
 	return [client_conn, client_req, req_per_conn, bandwith]
