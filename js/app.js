@@ -37,7 +37,7 @@ App.updateRequestGauge = function() {
 
 App.updateBandwidthGauge = function(){
 	bandwidth = nFormatter((App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value) - (App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value));
-	$("#bandwidth-gauge").html("<h1>"+bandwidth+"</h1>");
+	App.bandwidthGauge.refresh(bandwidth);
 }
 
 App.updateData = function(){
@@ -147,6 +147,15 @@ $(function(){
 	
 	App.requestGauge = new JustGage({
 	    id: "request-gauge", 
+	    value: 0, 
+	    min: 0,
+	    max: 100,
+	    title: " ",
+		label: "per second"
+	  });
+	
+	App.bandwidthGauge = new JustGage({
+	    id: "bandwidth-gauge", 
 	    value: 0, 
 	    min: 0,
 	    max: 100,
