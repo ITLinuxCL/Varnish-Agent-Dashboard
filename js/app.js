@@ -37,7 +37,7 @@ App.updateRequestGauge = function() {
 }
 
 App.updateBandwidthGauge = function(){
-	bandwidth = (App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value) - (App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value) / 1024 / 1024;
+	bandwidth = Math.round(((App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value) - (App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value)) / 1024 / 1024);
 	if(bandwidth > App.bandwidthMaxValue){
 		App.bandwidthMaxValue = bandwidth;
 	}
