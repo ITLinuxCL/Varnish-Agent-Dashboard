@@ -77,14 +77,14 @@ html, body {
 	padding-right: 5px;
 }
 
-#hit-ratio {
+.gauge {
 	text-align: center;
 	width: 250px;
 	height: 200px;
 	padding-left:30px;
 }
 
-#hit-ratio svg {
+.gauge svg {
 	margin-top: -20px;
 }
 

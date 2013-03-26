@@ -139,7 +139,7 @@ $(function(){
 	    value: 0, 
 	    min: 0,
 	    max: 100,
-	    title: "Requests",
+	    title: " ",
 		label: "per second"
 	  });
 	
