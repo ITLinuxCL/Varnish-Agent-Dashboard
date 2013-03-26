@@ -35,13 +35,18 @@ App.updateRequestGauge = function() {
 	App.requestGauge.refresh(requests_per_second, App.requestMaxValue);
 }
 
+App.updateBandwidthGauge = function(){
+	bandwidth = nFormatter((App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value) - (App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value));
+	$("#bandwidth-gauge").html("<h1>"+bandwidth+"</h1>");
+}
+
 App.updateData = function(){
 	App.getStats();
 	App.updateHitRatioGauge();
 	App.updateRequestGauge();
 	App.builMetricsTable("cache", App.getCacheMetrics());
 	App.builMetricsTable("traffic", App.getTrafficMetrics());
-	App.builMetricsTable("backend", App.getBackendMetrics());
+	App.updateBandwidthGauge();
 }
 
 App.getCacheMetrics = function() {
