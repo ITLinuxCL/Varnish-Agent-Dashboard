@@ -203,8 +203,8 @@ $(function(){
 		label: "Mbps"
 	  });
 	
-	setInterval(App.updateData,App.refreshTime);
 	App.updateBackendData();
+	setInterval(App.updateData,App.refreshTime);
 	
 });
 
