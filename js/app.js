@@ -36,7 +36,7 @@ App.updateRequestGauge = function() {
 }
 
 App.updateBandwidthGauge = function(){
-	bandwidth = nFormatter((App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value) - (App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value));
+	bandwidth = (App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value) - (App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value);
 	App.bandwidthGauge.refresh(bandwidth);
 }
 
