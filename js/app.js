@@ -54,7 +54,7 @@ App.updateBandwidthGauge = function(){
 	var old_bandwidth = App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value;
 	
 	var actual_bandwidth_in_mega = Math.round((new_bandwidth - old_bandwidth) / 1024 / 1024);
-	bandwidth_per_second = actual_bandwidth_in_mega / (App.refreshTime / 1000);
+	bandwidth_per_second = Math.round(actual_bandwidth_in_mega / (App.refreshTime / 1000));
 	
 	if(bandwidth_per_second > App.bandwidthMaxValue){
 		App.bandwidthMaxValue = bandwidth_per_second;
