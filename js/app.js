@@ -41,7 +41,7 @@ App.updateBandwidthGauge = function(){
 	if(bandwidth > App.bandwidthMaxValue){
 		App.bandwidthMaxValue = bandwidth;
 	}
-	App.bandwidthGauge.refresh(bandwidth, App.bandwidthMaxValue);
+	App.bandwidthGauge.refresh(bandwidth, nFormatter(App.bandwidthMaxValue));
 }
 
 App.updateData = function(){
