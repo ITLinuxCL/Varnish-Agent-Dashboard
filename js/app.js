@@ -71,7 +71,6 @@ App.updateData = function(){
 	App.builMetricsTable("cache", App.getCacheMetrics());
 	App.builMetricsTable("traffic", App.getTrafficMetrics());
 	App.builMetricsTable("backend", App.getBackendMetrics());
-	App.buildbackendRequestTable(App.backendRequests);
 }
 
 App.getCacheMetrics = function() {
@@ -201,6 +200,7 @@ $(function(){
 	  });
 	
 	setInterval(App.updateData,App.refreshTime);
+	setInterval(App.buildbackendRequestTable(App.backendRequests),10000);
 	
 });
 
