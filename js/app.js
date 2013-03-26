@@ -103,12 +103,12 @@ App.getBackendMetrics = function() {
 		new_value: nFormatter(App.newStats.backend_reuse.value - App.oldStats.backend_reuse.value),
 		average_value: nFormatter(App.newStats.backend_reuse.value / App.newStats.uptime.value)
 	}
-	var backend_recycle = {
-		label: "Recycle",
-		new_value: nFormatter(App.newStats.backend_recycle.value - App.oldStats.backend_recycle.value),
-		average_value: nFormatter(App.newStats.backend_recycle.value / App.newStats.uptime.value)
+	var backend_fetch = {
+		label: "Fetch",
+		new_value: nFormatter(App.newStats.s_pass.value + App.newStats.s_fetch.value - App.oldStats.s_fetch.value - App.oldStats.s_pass.value),
+		average_value: nFormatter((App.newStats.s_pass.value + App.newStats.s_fetch.value) / App.newStats.uptime.value)
 	}
-	return [backend_conn, backend_fail, backend_reuse, backend_recycle]
+	return [backend_conn, backend_fetch, backend_fail, backend_reuse]
 }
 
 
