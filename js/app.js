@@ -104,7 +104,7 @@ App.getBackendMetrics = function() {
 		average_value: nFormatter(App.newStats.backend_reuse.value / App.newStats.uptime.value)
 	}
 	var backend_fetch = {
-		label: "Fetch",
+		label: "Fetch & Pass",
 		new_value: nFormatter(App.newStats.s_pass.value + App.newStats.s_fetch.value - App.oldStats.s_fetch.value - App.oldStats.s_pass.value),
 		average_value: nFormatter((App.newStats.s_pass.value + App.newStats.s_fetch.value) / App.newStats.uptime.value)
 	}
