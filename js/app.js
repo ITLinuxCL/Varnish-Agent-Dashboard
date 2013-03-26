@@ -108,6 +108,7 @@ App.getBackendMetrics = function() {
 		new_value: nFormatter(App.newStats.backend_recycle.value - App.oldStats.backend_recycle.value),
 		average_value: nFormatter(App.newStats.backend_recycle.value / App.newStats.uptime.value)
 	}
+	return [backend_conn, backend_fail, backend_reuse, backend_recycle]
 }
 
 
