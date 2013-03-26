@@ -87,7 +87,7 @@
 							<i class="icon-thumbs-down"></i>
 							Backend Requests
 						</div>
-						
+						<div id="backend_request-table"></div>
 					</div>
 				</div>
 
@@ -102,7 +102,25 @@
 			<p><a href="http://www.itlinux.cl/">IT Linux</a></p>
 		</div>
 	  </div>
-
+	<script id="backend_request-table-template" type="text/x-handlebars-template">
+			<table class="table table-striped">
+			    <thead>
+					<tr>
+					  <th>Counter</th>
+					  <th style="text-align:left;">URL</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each request}}
+						<tr>
+							<td class="metric-value" style="">{{this[0]}}</td>
+							<td class="metric-value" style="">{{this[1]}}</td>
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+	</script>
+	
 	<script id="metrics-table-template" type="text/x-handlebars-template">
 			<table class="table table-striped">
 			    <thead>

@@ -64,12 +64,14 @@ App.updateBandwidthGauge = function(){
 
 App.updateData = function(){
 	App.getStats();
+	App.getBackendRequests();
 	App.updateHitRatioGauge();
 	App.updateRequestGauge();
 	App.updateBandwidthGauge();
 	App.builMetricsTable("cache", App.getCacheMetrics());
 	App.builMetricsTable("traffic", App.getTrafficMetrics());
 	App.builMetricsTable("backend", App.getBackendMetrics());
+	App.buildbackendRequestTable(App.backendRequests);
 }
 
 App.getCacheMetrics = function() {
@@ -157,6 +159,14 @@ App.builMetricsTable = function(table_id, values_object){
 	var template = Handlebars.compile(source);
 	var html = template(context);
 	$("#"+table_id+"-metrics-table").html(html);
+}
+
+App.buildbackendRequestTable = function(value_array){
+	var source   = $("#backend_request-table-template").html();
+	var context = { request: value_array};
+	var template = Handlebars.compile(source);
+	var html = template(context);
+	$("#backend_request-table").html(html);
 }
 
 
