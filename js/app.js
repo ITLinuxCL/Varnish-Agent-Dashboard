@@ -4,11 +4,21 @@ App.requestMaxValue = 0;
 App.bandwidthMaxValue = 0;
 App.oldStats = {};
 App.newStats = {};
+App.backendRequests = {};
 
 App.getStats = function(){
 	$.getJSON("/stats", function(data){
 		App.oldStats = App.newStats;
 		App.newStats = data;
+	})
+}
+
+App.getBackendRequests = function() {
+	$.getJSON("/log/1/TxHeader/X-Full-Uri", function(data){
+		$.each(data["log"], function(element){
+			tmp_array = element["value"].split(": ");
+			App.backendRequests[tmp_array[1]] = App.backendRequests[tmp_array[1]] ? App.backendRequests[tmp_array[1]] + 1 : 1;
+		})
 	})
 }
 
@@ -145,6 +155,7 @@ App.builMetricsTable = function(table_id, values_object){
 	var html = template(context);
 	$("#"+table_id+"-metrics-table").html(html);
 }
+
 
 $(function(){
 	App.hitRatioGauge = new JustGage({
