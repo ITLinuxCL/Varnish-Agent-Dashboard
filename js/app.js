@@ -229,6 +229,6 @@ function object_to_sorted_array(object){
 	for (var url in object){
 		sortable.push([url], object[url]);
 	}
-	sortable.sort(function(a,b){return b[1] - a[1]});
-	return sortable;
+	return sortable.sort(function(a,b){return a[1] - b[1]});
+
 }
