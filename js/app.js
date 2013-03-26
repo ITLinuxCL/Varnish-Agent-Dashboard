@@ -38,7 +38,7 @@ App.updateRequestGauge = function() {
 
 App.updateBandwidthGauge = function(){
 	var new_bandwidth = App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value;
-	var old_bandwidth = App.oldtats.s_hdrbytes.value + App.oldStats.s_bodybytes.value;
+	var old_bandwidth = App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value;
 	
 	var actual_bandwidth_in_mega = Math.round((new_bandwidth - old_bandwidth) / 1024 / 1024);
 	bandwidth_per_second = actual_bandwidth_in_mega / App.refreshTime / 1000;
