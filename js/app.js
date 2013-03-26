@@ -37,11 +37,11 @@ App.updateRequestGauge = function() {
 }
 
 App.updateBandwidthGauge = function(){
-	bandwidth = (App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value) - (App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value);
+	bandwidth = (App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value) - (App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value) / 1024 / 1024;
 	if(bandwidth > App.bandwidthMaxValue){
 		App.bandwidthMaxValue = bandwidth;
 	}
-	App.bandwidthGauge.refresh(bandwidth, nFormatter(App.bandwidthMaxValue));
+	App.bandwidthGauge.refresh(bandwidth, App.bandwidthMaxValue);
 }
 
 App.updateData = function(){
@@ -162,9 +162,9 @@ $(function(){
 	    id: "bandwidth-gauge", 
 	    value: 0, 
 	    min: 0,
-	    max: function(max){return 200},
+	    max: 100,
 	    title: " ",
-		label: "per second"
+		label: "Mbps"
 	  });
 	
 	setInterval(App.updateData,App.refreshTime);
