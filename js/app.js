@@ -85,7 +85,7 @@ App.getCacheMetrics = function() {
 
 App.getTrafficMetrics = function() {
 	var new_bandwidth = App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value;
-	var old_bandwidth = App.oldtats.s_hdrbytes.value + App.oldStats.s_bodybytes.value;
+	var old_bandwidth = App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value;
 	
 	var client_conn = {
 		label: "Connections",
