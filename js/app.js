@@ -131,7 +131,8 @@ App.builMetricsTable = function(table_id, values_object){
 $(function(){
 	App.hitRatioGauge = new JustGage({
 	    id: "hit-ratio", 
-	    value: 0, 
+	    value: 0,
+	 	levelColors: ["#f70000","#f9c800","#a8d600"],
 	    min: 0,
 	    max: 100,
 	    title: " ",
