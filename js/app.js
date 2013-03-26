@@ -1,5 +1,5 @@
 window.App = {};
-App.refreshTime = 1000;
+App.refreshTime = 2000;
 App.requestMaxValue = 0;
 App.bandwidthMaxValue = 0;
 App.oldStats = {};
