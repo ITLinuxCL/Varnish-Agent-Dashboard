@@ -162,7 +162,7 @@ $(function(){
 	    id: "bandwidth-gauge", 
 	    value: 0, 
 	    min: 0,
-	    max: function(max){return nFormatter(max)},
+	    max: function(max){return 200},
 	    title: " ",
 		label: "per second"
 	  });
