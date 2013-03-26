@@ -62,17 +62,17 @@ App.getCacheMetrics = function() {
 	}
 	var hits_qty = {
 		label: "Hits Qty.",
-		new_value: nFormatter(delta_new_old_value("cache_hit")),
+		new_value: nFormatter(metric_per_second("cache_hit")),
 		average_value: nFormatter(calc_average_value("cache_hit"))
 	}
 	var miss_qty = {
 		label: "Miss Qty.",
-		new_value: nFormatter(delta_new_old_value("cache_miss")),
+		new_value: nFormatter(metric_per_second("cache_miss")),
 		average_value: nFormatter(calc_average_value("cache_miss"))
 	}
 	var obj_cache = {
 		label: "Objs. in Cache",
-		new_value: nFormatter(delta_new_old_value("n_object")),
+		new_value: nFormatter(metric_per_second("n_object")),
 		average_value: nFormatter(App.newStats.n_object.value)
 	}
 	return [hits_ratio, hits_qty, miss_qty, obj_cache]
@@ -81,17 +81,17 @@ App.getCacheMetrics = function() {
 App.getTrafficMetrics = function() {
 	var client_conn = {
 		label: "Connections",
-		new_value: nFormatter(delta_new_old_value("client_conn")),
+		new_value: nFormatter(metric_per_second("client_conn")),
 		average_value: nFormatter(calc_average_value("client_conn"))
 	}
 	var client_req = {
 		label: "Requests",
-		new_value: nFormatter(delta_new_old_value("client_req")),
+		new_value: nFormatter(metric_per_second("client_req")),
 		average_value: nFormatter(calc_average_value("client_req"))
 	}
 	var req_per_conn = {
 		label: "Req / Conn",
-		new_value: nFormatter((delta_new_old_value("client_req")) /(delta_new_old_value("client_conn")) ),
+		new_value: nFormatter((metric_per_second("client_req")) /(metric_per_second("client_conn")) ),
 		average_value: nFormatter(App.newStats.client_req.value / App.newStats.client_conn.value)
 	}
 	
@@ -108,17 +108,17 @@ App.getTrafficMetrics = function() {
 App.getBackendMetrics = function() {
 	var backend_conn = {
 		label: "Connections",
-		new_value: nFormatter(delta_new_old_value("backend_conn")),
+		new_value: nFormatter(metric_per_second("backend_conn")),
 		average_value: nFormatter(calc_average_value("backend_conn"))
 	}
 	var backend_fail = {
 		label: "Fails",
-		new_value: nFormatter(delta_new_old_value("backend_fail")),
+		new_value: nFormatter(metric_per_second("backend_fail")),
 		average_value: nFormatter(calc_average_value("backend_fail"))
 	}
 	var backend_reuse = {
 		label: "Reuse",
-		new_value: nFormatter(delta_new_old_value("backend_reuse")),
+		new_value: nFormatter(metric_per_second("backend_reuse")),
 		average_value: nFormatter(calc_average_value("backend_reuse"))
 	}
 	var backend_fetch = {
@@ -196,7 +196,10 @@ function calc_average_value(metric) {
 	return result;
 }
 
-
-
-
+function metric_per_second(metric) {
+	var divider = App.refreshTime / 1000;
+	var value = delta_new_old_value(metric);
+	result = value / divider;
+	return result;
+}
 
