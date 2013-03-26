@@ -4,7 +4,7 @@ App.requestMaxValue = 0;
 App.bandwidthMaxValue = 0;
 App.oldStats = {};
 App.newStats = {};
-App.backendRequests = {};
+App.backendRequests = [];
 
 App.getStats = function(){
 	$.getJSON("/stats", function(data){
@@ -15,10 +15,12 @@ App.getStats = function(){
 
 App.getBackendRequests = function() {
 	$.getJSON("/log/1/TxHeader/X-Full-Uri", function(data){
+		var tmp_obj = {}
 		$.each(data["log"], function(index, element){
 			tmp_array = element["value"].split(": ");
-			App.backendRequests[tmp_array[1]] = App.backendRequests[tmp_array[1]] ? App.backendRequests[tmp_array[1]] + 1 : 1;
+			tmp_obj[tmp_array[1]] = tmp_obj[tmp_array[1]] ? tmp_obj[tmp_array[1]] + 1 : 1;
 		})
+		App.backendRequests = object_to_sorted_array(tmp_obj);
 	})
 }
 
@@ -222,3 +224,11 @@ function metric_per_second(metric) {
 	return result;
 }
 
+function object_to_sorted_array(object){
+	var sortable = [];
+	for (var url in object){
+		sortable.push([url], object[url]);
+	}
+	sortable.sort(function(a,b){return b[1] - a[1]});
+	return sortable;
+}
