@@ -15,7 +15,7 @@ App.getStats = function(){
 
 App.getBackendRequests = function() {
 	$.getJSON("/log/1/TxHeader/X-Full-Uri", function(data){
-		$.each(data["log"], function(element){
+		$.each(data["log"], function(index, element){
 			tmp_array = element["value"].split(": ");
 			App.backendRequests[tmp_array[1]] = App.backendRequests[tmp_array[1]] ? App.backendRequests[tmp_array[1]] + 1 : 1;
 		})
