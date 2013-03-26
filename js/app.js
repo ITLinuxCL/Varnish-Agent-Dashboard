@@ -1,5 +1,5 @@
 window.App = {};
-App.refreshTime = 10000;
+App.refreshTime = 3000;
 App.requestMaxValue = 0;
 App.bandwidthMaxValue = 0;
 App.oldStats = {};
@@ -203,7 +203,7 @@ $(function(){
 		label: "Mbps"
 	  });
 	
-	setInterval(App.updateBackendData,15000);
+	setInterval(App.updateBackendData,10000);
 	setInterval(App.updateData,App.refreshTime);
 	
 });
