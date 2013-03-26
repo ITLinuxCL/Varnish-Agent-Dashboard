@@ -64,13 +64,17 @@ App.updateBandwidthGauge = function(){
 
 App.updateData = function(){
 	App.getStats();
-	App.getBackendRequests();
 	App.updateHitRatioGauge();
 	App.updateRequestGauge();
 	App.updateBandwidthGauge();
 	App.builMetricsTable("cache", App.getCacheMetrics());
 	App.builMetricsTable("traffic", App.getTrafficMetrics());
 	App.builMetricsTable("backend", App.getBackendMetrics());
+}
+
+App.updateBackendData = function(){
+	App.getBackendRequests();
+	App.buildbackendRequestTable(App.backendRequests);
 }
 
 App.getCacheMetrics = function() {
@@ -200,7 +204,7 @@ $(function(){
 	  });
 	
 	setInterval(App.updateData,App.refreshTime);
-	setInterval(App.buildbackendRequestTable(App.backendRequests),10000);
+	App.updateBackendData();
 	
 });
 
