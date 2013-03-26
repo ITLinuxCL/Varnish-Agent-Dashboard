@@ -164,6 +164,7 @@ $(function(){
 	    min: 0,
 	    max: 100,
 	    title: " ",
+		levelColors: ["#40b7f1","#40b7f1","#40b7f1"],
 		label: "Mbps"
 	  });
 	
