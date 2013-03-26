@@ -22,15 +22,19 @@ App.calcAverageHitRatio = function(){
 	return Math.round(hitRatio);
 }
 
-App.updateHitRatio = function(){
-	
+App.updateHitRatioGauge = function(){
 	App.hitRatioGauge.refresh(App.calcHitRatio());
-	//$("#hit-ratio").html("<h1>"+App.calcHitRatio()+"</h1>");
+}
+
+App.updateRequestGauge = function() {
+	requests_per_second = App.newStats.client_req.value - App.oldStats.client_req.value;
+	App.requestGauge.refresh(requests_per_second, 9000);
 }
 
 App.updateData = function(){
 	App.getStats();
-	App.updateHitRatio();
+	App.updateHitRatioGauge();
+	App.updateRequestGauge();
 	App.builMetricsTable("cache", App.getCacheMetrics());
 	App.builMetricsTable("traffic", App.getTrafficMetrics());
 	App.builMetricsTable("backend", App.getBackendMetrics());
@@ -129,6 +133,16 @@ $(function(){
 	    title: " ",
 		label: "%"
 	  });
+	
+	App.requestGauge = new JustGage({
+	    id: "request-gauge", 
+	    value: 0, 
+	    min: 0,
+	    max: 100,
+	    title: "Requests",
+		label: "per second"
+	  });
+	
 	setInterval(App.updateData,App.refreshTime);
 	
 });
