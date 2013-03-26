@@ -62,17 +62,17 @@ App.getCacheMetrics = function() {
 	}
 	var hits_qty = {
 		label: "Hits Qty.",
-		new_value: nFormatter(App.newStats.cache_hit.value - App.oldStats.cache_hit.value),
+		new_value: nFormatter(delta_new_old_value("cache_hit")),
 		average_value: nFormatter(App.newStats.cache_hit.value / App.newStats.uptime.value)
 	}
 	var miss_qty = {
 		label: "Miss Qty.",
-		new_value: nFormatter(App.newStats.cache_miss.value - App.oldStats.cache_miss.value),
+		new_value: nFormatter(delta_new_old_value("cache_miss")),
 		average_value: nFormatter(App.newStats.cache_miss.value / App.newStats.uptime.value)
 	}
 	var obj_cache = {
 		label: "Objs. in Cache",
-		new_value: nFormatter(App.newStats.n_object.value - App.oldStats.n_object.value),
+		new_value: nFormatter(delta_new_old_value("n_object")),
 		average_value: nFormatter(App.newStats.n_object.value)
 	}
 	return [hits_ratio, hits_qty, miss_qty, obj_cache]
@@ -185,3 +185,13 @@ function nFormatter(num) {
      }
      return Math.round(num);
 }
+
+function delta_new_old_value(metric) {
+	var result = App["newStats"][metric]["value"] - App["oldStats"][metric]["value"];
+	return result;
+}
+
+
+
+
+
