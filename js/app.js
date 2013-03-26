@@ -235,7 +235,7 @@ function calc_average_value(metric) {
 function metric_per_second(metric) {
 	var divider = App.refreshTime / 1000;
 	var value = delta_new_old_value(metric);
-	result = value / divider;
+	result = Math.round(value / divider);
 	return result;
 }
 
