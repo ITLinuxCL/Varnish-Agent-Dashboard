@@ -1,6 +1,7 @@
 window.App = {};
 App.refreshTime = 1000;
 App.requestMaxValue = 0;
+App.bandwidthMaxValue = 0;
 App.oldStats = {};
 App.newStats = {};
 
@@ -37,7 +38,10 @@ App.updateRequestGauge = function() {
 
 App.updateBandwidthGauge = function(){
 	bandwidth = (App.newStats.s_hdrbytes.value + App.newStats.s_bodybytes.value) - (App.oldStats.s_hdrbytes.value + App.oldStats.s_bodybytes.value);
-	App.bandwidthGauge.refresh(bandwidth);
+	if(bandwidth > App.bandwidthMaxValue){
+		App.bandwidthMaxValue = bandwidth;
+	}
+	App.bandwidthGauge.refresh(bandwidth, App.bandwidthMaxValue);
 }
 
 App.updateData = function(){
