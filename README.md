@@ -1,9 +1,20 @@
 ##Introduction
 This is a simple HTML Dashboard that works together with the new Varnish Agent 2 (https://github.com/varnish/vagent2).
 
-[IMAGE]
+![Screenshot](https://raw.github.com/pbruna/Varnish-Agent-Dashboard/master/img/screenshot.png)
 
 The previous image was taken from a live site using Varnish.
+
+**Important Note**
+The Backend Requests is a list of all the URL fetched from the backend.
+For this to work you need to add the following instruction to the vcl_recv routine:
+
+```c
+sub vcl_recv {
+  set req.http.X-Full-Uri = req.http.host + req.url;
+....
+```
+
 
 ##How to use it
 
