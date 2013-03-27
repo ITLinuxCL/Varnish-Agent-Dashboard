@@ -20,6 +20,7 @@ sub vcl_recv {
 ##How to use it
 
 **1. Install Varnish Agent 2**
+
 The agent must be installed in the same server running Varnish Cache. You can clone and compile the source code or install it using the following packages for Debian/Ubuntu and RHEL/CentOS: http://users.varnish-software.com/~kristian/agent/
 
 I recommend that you read the docs on the GitHub repo and this post: http://kly.no/posts/2013_01_22_Varnish_Agent.html
@@ -32,6 +33,7 @@ username:password
 
 
 **2. Clone this Repo**
+
 For this guide we are going to assume that the Dashboard will be located at /var/www/html/Varnish-Agent-Dashboard. So lets create the directory and clone the repo:
 
 ```bash
@@ -41,6 +43,7 @@ git clone git://github.com/pbruna/Varnish-Agent-Dashboard.git
 ```
 
 **3. Run the Agent and use the Dashboard**
+
 Now you are ready to use the Dashboard, just run the Agent like the following example:
 
 ```bash
