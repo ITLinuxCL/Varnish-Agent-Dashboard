@@ -6,6 +6,7 @@ This is a simple HTML Dashboard that works together with the new Varnish Agent 2
 The previous image was taken from a live site using Varnish.
 
 **Important Note**
+
 The Backend Requests is a list of all the URL fetched from the backend.
 For this to work you need to add the following instruction to the vcl_recv routine:
 
