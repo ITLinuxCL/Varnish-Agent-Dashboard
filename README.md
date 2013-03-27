@@ -1,5 +1,5 @@
 ##Introduction
-This is a simple HTML Dashboard that works together with the new Varnish Agent 2 (https://github.com/varnish/vagent2).
+This is a simple realtime HTML Dashboard that works together with the new Varnish Agent 2 (https://github.com/varnish/vagent2).
 
 ![Screenshot](https://raw.github.com/pbruna/Varnish-Agent-Dashboard/master/img/screenshot.png)
 
