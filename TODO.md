@@ -1,4 +1,4 @@
-_This TODO list is mostly based on the input of Rubén Romero. Thanks!_
+_This TODO list is mostly based on the input from Rubén Romero. Thanks!_
 
 * Show metrics for each Backend
 * Show metrics for each Director
