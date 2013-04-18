@@ -2,6 +2,8 @@ _This TODO list is mostly based on the input from Rubén Romero. Thanks!_
 
 * The user should be able to change the refresh time
 * Show description for each metric
+* A counter of how much time the dashboard has been running
+* Show metrics for HTTP return codes: 200, 404, 5xx -> This info comes from the log
 * Show metrics for each Backend
 * Show metrics for each Director
 * A way to select diferent Varnish Agent if we have more than one Varnish Cache
