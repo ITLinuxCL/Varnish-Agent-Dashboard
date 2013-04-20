@@ -4,6 +4,7 @@ _This TODO list is mostly based on the input from Rubén Romero. Thanks!_
 * Show description for each metric
 * A counter of how much time the dashboard has been running
 * Edit the VCL File with syntax highlighting
+* Use HTML5 Datastore to store configurations (like time refresh)
 * A notification for new console versions
 * Show metrics for HTTP return codes: 200, 404, 5xx -> This info comes from the log
 * Show metrics for each Backend
