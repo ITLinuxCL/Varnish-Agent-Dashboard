@@ -2,24 +2,32 @@
 <html lang="es">
 	<head>
 		<meta charset="utf-8">
-		<meta charset=utf-8 />
 		<title>Varnish Dashboard</title>
 	  	<link rel="stylesheet" href="css/bootstrap-responsive.css">
 	  	<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/slider.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 	  <div id="wrap">
+		
 		<div class="navbar navbar-fixed-top navbar-inverse">
 		  <div class="navbar-inner">
 			<div class="container">
 		      <a class="brand" href="#">Varnish Dashboard</a>
+		      <div class="pull-right" style="margin-top:10px">
+				<span style="color: gray; margin-right: 5px">Refresh time</span>
+			  	<div class="slider slider-horizontal" style="width: 100px">
+					<input value="" type="text" data-slider-min="-20" data-slider-max="20" data-slider-step="1" data-slider-value="2" data-slider-tooltip="hide">
+			  	</div>
+			  </div>
 		    </div>
 		  </div>
 		</div>
 		
 		<div class="container">
 			
+			<!-- First row // Graphs -->
 			<div class="row-fluid">
 				<div class="span4">
 					<div class="content-box">
@@ -49,7 +57,8 @@
 					</div>
 				</div>
 			</div>
-			
+
+			<!-- Second row // Tables -->			
 			<div class="row-fluid">
 				<div class="span4">
 					<div class="content-box">
@@ -80,6 +89,7 @@
 				</div>
 			</div>		
 
+			<!-- Third row // Backend requests -->
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="content-box">
@@ -94,7 +104,7 @@
 				</div>
 
 			</div>
-
+			
 		</div>
 		<div id="push" />
 	  </div>
@@ -102,7 +112,7 @@
 	 <div id="footer">
 		<div class="container" style="padding-top: 20px">
 			<p>
-				<a href="http://www.itlinux.cl/">An IT Linux production</a>
+
 				<a href="http://www.itlinux.cl/" class="pull-right"><img src="img/logo_mini.png"/ style="margin-top: -20px;
 				"></a>
 			</p>
@@ -157,6 +167,7 @@
 	  <script src="js/libs/handlebars-1.0.0-rc.3.js"></script>
 	  <script src="js/libs/justgage.js"></script>
 	  <script src="js/libs/raphael.2.1.0.min.js"></script>
+	  <script src="js/libs/bootstrap-slider.js"></script>
 	  <script src="js/app.js"></script>
 
 	</body>

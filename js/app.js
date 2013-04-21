@@ -174,6 +174,24 @@ App.buildbackendRequestTable = function(value_array){
 
 
 $(function(){
+	
+	$(".slider").slider({
+		min: 1,
+		max: 10,
+		value: App.refreshTime / 1000,
+		step: 1,
+		formater: function(value){
+			return value-1+' s';
+		}
+		
+	}).on('slideStop', function(ev){
+		App.refreshTime = ev.value * 1000;
+		clearInterval(updateBackendDataTimer);
+		clearInterval(updateData);
+		updateBackendDataTimer = setInterval(App.updateBackendData,App.refreshTime);
+		updateData = setInterval(App.updateData,App.refreshTime);
+	});
+	
 	App.hitRatioGauge = new JustGage({
 	    id: "hit-ratio", 
 	    value: 0,
@@ -203,8 +221,8 @@ $(function(){
 		label: "Mbps"
 	  });
 	
-	setInterval(App.updateBackendData,10000);
-	setInterval(App.updateData,App.refreshTime);
+	updateBackendDataTimer = setInterval(App.updateBackendData,App.refreshTime);
+	updateData = setInterval(App.updateData,App.refreshTime);
 	
 });
 
