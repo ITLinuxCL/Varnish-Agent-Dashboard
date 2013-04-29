@@ -1,6 +1,7 @@
 _This TODO list is mostly based on the input from Rubén Romero. Thanks!_
 
 * ~~The user should be able to change the refresh time~~
+* GUI for entering varnishadm commands
 * Log parser and graph??
 * Display bancked health
 * Edit the VCL File with syntax highlighting
