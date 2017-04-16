@@ -1,4 +1,4 @@
-##Introduction
+## Introduction
 This is a simple realtime HTML Dashboard that works together with the new Varnish Agent 2 (https://github.com/varnish/vagent2).
 
 ![Screenshot](https://raw.github.com/pbruna/Varnish-Agent-Dashboard/master/img/screenshot.png)
@@ -17,7 +17,7 @@ sub vcl_recv {
 ```
 
 
-##How to use it
+## How to use it
 
 **1. Install Varnish Agent 2**
 
